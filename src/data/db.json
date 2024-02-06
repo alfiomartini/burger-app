@@ -1,0 +1,149 @@
+{
+  "burgers": [
+    {
+      "id": "0",
+      "name": "Standard Burger",
+      "description": "A mouth-watering honest beef burger",
+      "ingredients": [
+        {
+          "name": "beef",
+          "quantity": 100
+        },
+        {
+          "name": "cheese",
+          "quantity": 20
+        },
+        {
+          "name": "mustard",
+          "quantity": 20
+        },
+        {
+          "name": "pickles",
+          "quantity": 30
+        },
+        {
+          "name": "lettuce",
+          "quantity": 20
+        },
+        {
+          "name": "bun",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Chicken Burger",
+      "description": "A chicken sandwich is a sandwich that typically consists of boneless, skinless chicken breast or thigh, served between slices of bread, on a bun",
+      "ingredients": [
+        {
+          "name": "bun",
+          "quantity": 2
+        },
+        {
+          "name": "chicken",
+          "quantity": 150
+        },
+        {
+          "name": "lettuce",
+          "quantity": 20
+        },
+        {
+          "name": "mayo",
+          "quantity": 20
+        },
+        {
+          "name": "cheese",
+          "quantity": 20
+        },
+        {
+          "name": "tomato",
+          "quantity": 40
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Fish Burger",
+      "description": "A homemade fish burger with a crunchy crumb that tastes just like McDonald's Filet-O-Fish",
+      "ingredients": [
+        {
+          "name": "bun",
+          "quantity": 2
+        },
+        {
+          "name": "fish",
+          "quantity": 150
+        },
+        {
+          "name": "lettuce",
+          "quantity": 20
+        },
+        {
+          "name": "mayo",
+          "quantity": 20
+        },
+        {
+          "name": "tomato",
+          "quantity": 40
+        }
+      ]
+    }
+  ],
+  "ingredients": [
+    {
+      "id": "1",
+      "name": "pickles",
+      "quantity": 100,
+      "description": "grams"
+    },
+    {
+      "id": "2",
+      "name": "onion",
+      "quantity": 100,
+      "description": "grams"
+    },
+    {
+      "id": "3",
+      "name": "bun",
+      "quantity": 20,
+      "description": "units"
+    },
+    {
+      "id": "4",
+      "name": "tomato",
+      "quantity": 100,
+      "description": "grams"
+    },
+    {
+      "id": "5",
+      "name": "ketchup",
+      "quantity": 100,
+      "description": "grams"
+    },
+    {
+      "id": "6",
+      "name": "lettuce",
+      "quantity": 100,
+      "description": "grams"
+    },
+    {
+      "id": "7",
+      "name": "egg",
+      "quantity": 10,
+      "description": "units"
+    },
+    {
+      "id": "8",
+      "name": "chicken",
+      "quantity": 1000,
+      "description": "grams"
+    },
+    {
+      "id": "9",
+      "name": "mayo",
+      "quantity": 200,
+      "description": "grams"
+    }
+  ]
+}
