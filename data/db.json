@@ -32,7 +32,7 @@
       ]
     },
     {
-      "id": 1,
+      "id": "1",
       "name": "Chicken Burger",
       "description": "A chicken sandwich is a sandwich that typically consists of boneless, skinless chicken breast or thigh, served between slices of bread, on a bun",
       "ingredients": [
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Fish Burger",
       "description": "A homemade fish burger with a crunchy crumb that tastes just like McDonald's Filet-O-Fish",
       "ingredients": [
@@ -143,6 +143,12 @@
       "id": "9",
       "name": "mayo",
       "quantity": 200,
+      "description": "grams"
+    },
+    {
+      "id": "9c5f",
+      "name": "beef",
+      "quantity": 1000,
       "description": "grams"
     }
   ]
