@@ -15,12 +15,17 @@ export function Ingredients({ ingredients }: Props) {
         <h2>Ingredients List</h2>
         <div className="ingredients">
           {ingredients.map((item: Ingredient) => (
-            <Badge name={item.name} />
+            <Badge {...item} key={item.id} />
           ))}
         </div>
       </div>
 
-      <h1>Add Ingredient Form</h1>
+      <div className="ingredients-form">
+        <h2>Add Ingredient</h2>
+        <div className="ingredient-form">
+          <h3>Ingredient Form</h3>
+        </div>
+      </div>
     </div>
   );
 }

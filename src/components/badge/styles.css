@@ -3,6 +3,10 @@
   border-radius: 8px;
   background-color: lightsteelblue;
   color: black;
-  display: inline-block;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
 }

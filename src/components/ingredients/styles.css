@@ -16,3 +16,10 @@
   gap: 20px;
   padding: 30px;
 }
+
+.ingredients-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+}
