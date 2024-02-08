@@ -51,8 +51,9 @@ function App() {
       console.log("Ignoring fetchBurgers");
     };
   }, []);
+
   return (
-    <div className="card">
+    <div className="app">
       <Header />
       <Routes>
         <Route path="/" element={<Burgers burgers={burgers} />} />
