@@ -8,7 +8,7 @@ interface Props {
 
 export function FormIngredient({ addIngredient }: Props) {
   const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState("0");
+  const [quantity, setQuantity] = useState("");
   const [description, setDescription] = useState("");
 
   const handleQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +20,7 @@ export function FormIngredient({ addIngredient }: Props) {
     e.preventDefault();
     addIngredient({ name, quantity: parseInt(quantity), description });
     setName("");
-    setQuantity("0");
+    setQuantity("");
     setDescription("");
   }
 
@@ -49,6 +49,7 @@ export function FormIngredient({ addIngredient }: Props) {
           placeholder="Quantity (grams)"
           value={String(quantity)}
           onChange={handleQuantity}
+          required
         />
       </div>
       <div className="form-control">

@@ -11,7 +11,6 @@ interface Props {
 }
 
 export function Badge({ name, id, removeIngredient }: Props) {
-  console.log("name, id", name, id);
   return (
     <span className="badge">
       {name} <CiEdit style={{ cursor: "pointer" }} />{" "}

@@ -29,8 +29,7 @@ function App() {
 
   async function removeIngredient(id: string) {
     try {
-      const deletedIngredient = await deleteIngredient(id);
-      console.log("deleted ingredient", deletedIngredient);
+      await deleteIngredient(id);
       const newIngredients = ingredients.filter((item) => item.id !== id);
       setIngredients(newIngredients);
     } catch (error) {
