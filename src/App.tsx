@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
-import { fetchIngredients, fetchBurgers } from "./api/fetchApis";
-import { Burger, Ingredient } from "./interfaces";
+import {
+  fetchIngredients,
+  fetchBurgers,
+  CreateIngredient,
+} from "./api/fetchApis";
+import { Burger, Ingredient, WeakIngredient } from "./interfaces";
 import { Header } from "./components/header/Header";
 import { Ingredients } from "./components/ingredients/Ingredients";
 import { Burgers } from "./components/burgers/Burgers";
@@ -10,6 +14,12 @@ import "./App.css";
 function App() {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [burgers, setBurgers] = useState<Burger[]>([]);
+
+  async function addIngredient(item: WeakIngredient) {
+    const newIngredient = await CreateIngredient(item);
+    console.log("newIngredient", newIngredient);
+    setIngredients((prev) => [...prev, newIngredient]);
+  }
 
   useEffect(() => {
     let active = true;
@@ -60,7 +70,12 @@ function App() {
           <Route path="/" element={<Burgers burgers={burgers} />} />
           <Route
             path="/ingredients"
-            element={<Ingredients ingredients={ingredients} />}
+            element={
+              <Ingredients
+                ingredients={ingredients}
+                addIngredient={addIngredient}
+              />
+            }
           />
         </Routes>
       </div>

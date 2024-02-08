@@ -1,13 +1,15 @@
-import { Ingredient } from "../../interfaces";
+import { Dispatch } from "react";
+import { WeakIngredient, Ingredient } from "../../interfaces";
 import { Badge } from "../badge/Badge";
 import { FormIngredient } from "../formIngredient/FormIngredient";
 import "./styles.css";
 
 interface Props {
   ingredients: Ingredient[];
+  addIngredient: Dispatch<WeakIngredient>;
 }
 
-export function Ingredients({ ingredients }: Props) {
+export function Ingredients({ ingredients, addIngredient }: Props) {
   console.log(ingredients);
 
   return (
@@ -24,7 +26,7 @@ export function Ingredients({ ingredients }: Props) {
       <div className="ingredients-form">
         <div className="ingredient-form">
           <h2>Ingredient Form</h2>
-          <FormIngredient />
+          <FormIngredient addIngredient={addIngredient} />
         </div>
       </div>
     </div>

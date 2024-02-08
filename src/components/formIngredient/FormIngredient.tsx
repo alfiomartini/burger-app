@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useState, Dispatch } from "react";
+import { WeakIngredient } from "../../interfaces";
 import "./styles.css";
 
-export function FormIngredient() {
+interface Props {
+  addIngredient: Dispatch<WeakIngredient>;
+}
+
+export function FormIngredient({ addIngredient }: Props) {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [description, setDescription] = useState("");
@@ -9,6 +14,7 @@ export function FormIngredient() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log(name, quantity, description);
+    addIngredient({ name, quantity, description });
   }
 
   return (
@@ -19,7 +25,7 @@ export function FormIngredient() {
           type="text"
           name="name"
           id="name"
-          placeholder="name of ingredient"
+          placeholder="Name of ingredient"
           required
           minLength={3}
           maxLength={15}
@@ -33,9 +39,9 @@ export function FormIngredient() {
           type="number"
           name="quantity"
           id="quantity"
-          min={0}
-          placeholder="quantity (grams)"
-          value={quantity}
+          min={100}
+          placeholder="Quantity (grams)"
+          value={String(quantity)}
           onChange={(e) => setQuantity(parseInt(e.target.value))}
         />
       </div>
@@ -45,7 +51,7 @@ export function FormIngredient() {
           type="text"
           name="description"
           id="description"
-          placeholder="brief description"
+          placeholder="A couple of words..."
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
