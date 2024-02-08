@@ -10,14 +10,17 @@ interface Props {
   removeIngredient: (id: string) => void;
 }
 
-export function Badge({ name, id, removeIngredient }: Props) {
+export function Badge({ name, id, quantity, removeIngredient }: Props) {
   return (
     <span className="badge">
-      {name} <CiEdit style={{ cursor: "pointer" }} />{" "}
-      <RiDeleteBinLine
-        style={{ cursor: "pointer" }}
-        onClick={() => removeIngredient(id)}
-      />
+      {name} ({quantity}){" "}
+      <span className="badge-icons">
+        <CiEdit style={{ cursor: "pointer" }} />{" "}
+        <RiDeleteBinLine
+          style={{ cursor: "pointer" }}
+          onClick={() => removeIngredient(id)}
+        />
+      </span>
     </span>
   );
 }

@@ -6,7 +6,12 @@
   text-align: center;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  gap: 10px;
+}
+
+.badge-icons {
+  display: flex;
   gap: 10px;
 }
