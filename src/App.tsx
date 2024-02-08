@@ -55,13 +55,15 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <Routes>
-        <Route path="/" element={<Burgers burgers={burgers} />} />
-        <Route
-          path="/ingredients"
-          element={<Ingredients ingredients={ingredients} />}
-        />
-      </Routes>
+      <div className="main">
+        <Routes>
+          <Route path="/" element={<Burgers burgers={burgers} />} />
+          <Route
+            path="/ingredients"
+            element={<Ingredients ingredients={ingredients} />}
+          />
+        </Routes>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,10 @@
 .ingredients-container {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 30px;
+  justify-content: space-around;
+  align-content: center;
+  height: 60vh;
 }
 
 .ingredients {
@@ -17,7 +20,7 @@
   padding: 30px;
 }
 
-.ingredients-form {
+.ingredient-form {
   display: flex;
   flex-direction: column;
   gap: 20px;

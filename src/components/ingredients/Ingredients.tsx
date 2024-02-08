@@ -1,5 +1,6 @@
 import { Ingredient } from "../../interfaces";
 import { Badge } from "../badge/Badge";
+import { FormIngredient } from "../formIngredient/FormIngredient";
 import "./styles.css";
 
 interface Props {
@@ -21,9 +22,9 @@ export function Ingredients({ ingredients }: Props) {
       </div>
 
       <div className="ingredients-form">
-        <h2>Add Ingredient</h2>
         <div className="ingredient-form">
-          <h3>Ingredient Form</h3>
+          <h2>Ingredient Form</h2>
+          <FormIngredient />
         </div>
       </div>
     </div>
