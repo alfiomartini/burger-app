@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import {
   fetchIngredients,
   fetchBurgers,
-  CreateIngredient,
+  createIngredient,
+  deleteIngredient,
 } from "./api/fetchApis";
 import { Burger, Ingredient, WeakIngredient } from "./interfaces";
 import { Header } from "./components/header/Header";
@@ -16,9 +17,27 @@ function App() {
   const [burgers, setBurgers] = useState<Burger[]>([]);
 
   async function addIngredient(item: WeakIngredient) {
-    const newIngredient = await CreateIngredient(item);
-    console.log("newIngredient", newIngredient);
-    setIngredients((prev) => [...prev, newIngredient]);
+    try {
+      const newIngredient = await createIngredient(item);
+      setIngredients((prev) => [...prev, newIngredient]);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      }
+    }
+  }
+
+  async function removeIngredient(id: string) {
+    try {
+      const deletedIngredient = await deleteIngredient(id);
+      console.log("deleted ingredient", deletedIngredient);
+      const newIngredients = ingredients.filter((item) => item.id !== id);
+      setIngredients(newIngredients);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      }
+    }
   }
 
   useEffect(() => {
@@ -74,6 +93,7 @@ function App() {
               <Ingredients
                 ingredients={ingredients}
                 addIngredient={addIngredient}
+                removeIngredient={removeIngredient}
               />
             }
           />

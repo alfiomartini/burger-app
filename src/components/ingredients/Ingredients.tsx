@@ -7,9 +7,14 @@ import "./styles.css";
 interface Props {
   ingredients: Ingredient[];
   addIngredient: Dispatch<WeakIngredient>;
+  removeIngredient: (id: string) => void;
 }
 
-export function Ingredients({ ingredients, addIngredient }: Props) {
+export function Ingredients({
+  ingredients,
+  addIngredient,
+  removeIngredient,
+}: Props) {
   console.log(ingredients);
 
   return (
@@ -18,7 +23,11 @@ export function Ingredients({ ingredients, addIngredient }: Props) {
         <h2>Ingredients List</h2>
         <div className="ingredients">
           {ingredients.map((item: Ingredient) => (
-            <Badge {...item} key={item.id} />
+            <Badge
+              {...item}
+              key={item.id}
+              removeIngredient={removeIngredient}
+            />
           ))}
         </div>
       </div>

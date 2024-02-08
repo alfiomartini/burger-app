@@ -8,13 +8,20 @@ interface Props {
 
 export function FormIngredient({ addIngredient }: Props) {
   const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState("0");
   const [description, setDescription] = useState("");
+
+  const handleQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const result = e.target.value.replace(/\D/g, "");
+    setQuantity(result);
+  };
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(name, quantity, description);
-    addIngredient({ name, quantity, description });
+    addIngredient({ name, quantity: parseInt(quantity), description });
+    setName("");
+    setQuantity("0");
+    setDescription("");
   }
 
   return (
@@ -36,13 +43,12 @@ export function FormIngredient({ addIngredient }: Props) {
       <div className="form-control">
         <label htmlFor="quantity">Quantity* (grams)</label>
         <input
-          type="number"
+          type="text"
           name="quantity"
           id="quantity"
-          min={100}
           placeholder="Quantity (grams)"
           value={String(quantity)}
-          onChange={(e) => setQuantity(parseInt(e.target.value))}
+          onChange={handleQuantity}
         />
       </div>
       <div className="form-control">

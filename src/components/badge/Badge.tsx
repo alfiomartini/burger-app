@@ -7,14 +7,18 @@ interface Props {
   id: string;
   description: string;
   quantity: number;
+  removeIngredient: (id: string) => void;
 }
 
-export function Badge({ name, id }: Props) {
+export function Badge({ name, id, removeIngredient }: Props) {
   console.log("name, id", name, id);
   return (
     <span className="badge">
       {name} <CiEdit style={{ cursor: "pointer" }} />{" "}
-      <RiDeleteBinLine style={{ cursor: "pointer" }} />
+      <RiDeleteBinLine
+        style={{ cursor: "pointer" }}
+        onClick={() => removeIngredient(id)}
+      />
     </span>
   );
 }
