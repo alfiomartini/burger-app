@@ -6,6 +6,7 @@ export function Header() {
     <div className="navbar">
       <Link to="/">Burgers</Link>
       <Link to="/ingredients">Ingredients</Link>
+      <Link to="/orders">Orders</Link>
     </div>
   );
 }

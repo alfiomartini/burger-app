@@ -9,6 +9,7 @@ import { Burger, Ingredient, WeakIngredient } from "./interfaces";
 import { Header } from "./components/header/Header";
 import { Ingredients } from "./components/ingredients/Ingredients";
 import { Burgers } from "./components/burgers/Burgers";
+import { Orders } from "./components/orders/Orders";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
@@ -96,6 +97,7 @@ function App() {
               />
             }
           />
+          <Route path="/orders" element={<Orders />} />
         </Routes>
       </div>
     </div>
