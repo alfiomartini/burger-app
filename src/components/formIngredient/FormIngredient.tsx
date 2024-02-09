@@ -1,15 +1,29 @@
-import { useState, Dispatch } from "react";
+import { useState, Dispatch, useEffect } from "react";
 import { WeakIngredient } from "../../interfaces";
 import "./styles.css";
 
 interface Props {
   addIngredient: Dispatch<WeakIngredient>;
+  name_?: string;
+  quantity_?: string;
+  description_?: string;
 }
 
-export function FormIngredient({ addIngredient }: Props) {
-  const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [description, setDescription] = useState("");
+export function FormIngredient({
+  addIngredient,
+  name_ = "",
+  quantity_ = "",
+  description_ = "",
+}: Props) {
+  const [name, setName] = useState(name_);
+  const [quantity, setQuantity] = useState(quantity_);
+  const [description, setDescription] = useState(description_);
+
+  useEffect(() => {
+    setName(name_);
+    setQuantity(quantity_);
+    setDescription(description_);
+  }, [name_, quantity_, description_]);
 
   const handleQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
     const result = e.target.value.replace(/\D/g, "");
