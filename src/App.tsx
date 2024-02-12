@@ -4,6 +4,7 @@ import {
   fetchBurgers,
   createIngredient,
   deleteIngredient,
+  updateIngredient,
 } from "./api/fetchApis";
 import { Burger, Ingredient, WeakIngredient } from "./interfaces";
 import { Header } from "./components/header/Header";
@@ -33,6 +34,20 @@ function App() {
       await deleteIngredient(id);
       const newIngredients = ingredients.filter((item) => item.id !== id);
       setIngredients(newIngredients);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      }
+    }
+  }
+
+  async function editIngredient(item: Ingredient) {
+    try {
+      const updatedIngredient = await updateIngredient(item);
+      setIngredients((prev) => [
+        ...prev.filter((elem) => elem.id !== item.id),
+        updatedIngredient,
+      ]);
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);
@@ -94,6 +109,7 @@ function App() {
                 ingredients={ingredients}
                 addIngredient={addIngredient}
                 removeIngredient={removeIngredient}
+                editIngredient={editIngredient}
               />
             }
           />

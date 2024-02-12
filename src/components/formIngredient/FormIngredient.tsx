@@ -1,19 +1,26 @@
-import { useState, Dispatch, useEffect } from "react";
-import { WeakIngredient } from "../../interfaces";
+import { useState, useEffect, Dispatch } from "react";
+import { Ingredient, WeakIngredient } from "../../interfaces";
+import { isEmpty } from "../../utilities";
 import "./styles.css";
 
 interface Props {
-  addIngredient: Dispatch<WeakIngredient>;
+  addIngredient: (item: WeakIngredient) => void;
+  editIngredient: (item: Ingredient) => void;
   name_?: string;
   quantity_?: string;
   description_?: string;
+  currentIngredient: Ingredient;
+  setCurrentIngredient: Dispatch<Ingredient>;
 }
 
 export function FormIngredient({
   addIngredient,
+  editIngredient,
+  setCurrentIngredient,
   name_ = "",
   quantity_ = "",
   description_ = "",
+  currentIngredient,
 }: Props) {
   const [name, setName] = useState(name_);
   const [quantity, setQuantity] = useState(quantity_);
@@ -32,7 +39,17 @@ export function FormIngredient({
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    addIngredient({ name, quantity: parseInt(quantity), description });
+    if (isEmpty(currentIngredient))
+      addIngredient({ name, quantity: parseInt(quantity), description });
+    else {
+      editIngredient({
+        id: currentIngredient.id,
+        name,
+        quantity: parseInt(quantity),
+        description,
+      });
+      setCurrentIngredient({} as Ingredient);
+    }
     setName("");
     setQuantity("");
     setDescription("");
@@ -77,7 +94,9 @@ export function FormIngredient({
           onChange={(e) => setDescription(e.target.value)}
         />
       </div>
-      <button type="submit">Add Ingredient</button>
+      <button type="submit">
+        {isEmpty(currentIngredient) ? "Add Ingredient" : "Update Ingredient"}
+      </button>
     </form>
   );
 }

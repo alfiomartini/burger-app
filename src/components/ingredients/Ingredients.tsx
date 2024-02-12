@@ -1,28 +1,26 @@
-import { Dispatch, useState } from "react";
+import { useState } from "react";
 import { WeakIngredient, Ingredient } from "../../interfaces";
 import { Badge } from "../badge/Badge";
 import { FormIngredient } from "../formIngredient/FormIngredient";
+import { isEmpty } from "../../utilities";
 import "./styles.css";
 
 interface Props {
   ingredients: Ingredient[];
-  addIngredient: Dispatch<WeakIngredient>;
+  addIngredient: (item: WeakIngredient) => void;
   removeIngredient: (id: string) => void;
+  editIngredient: (item: Ingredient) => void;
 }
 
 export function Ingredients({
   ingredients,
   addIngredient,
   removeIngredient,
+  editIngredient,
 }: Props) {
   const [currentIngredient, setCurrentIngredient] = useState<Ingredient>(
     {} as Ingredient
   );
-
-  function isEmpty(obj: Ingredient) {
-    if (Object.keys(obj).length === 0) return true;
-    return false;
-  }
 
   return (
     <div className="ingredients-container">
@@ -47,15 +45,23 @@ export function Ingredients({
             <h2>Edit Ingredient Form</h2>
             <FormIngredient
               addIngredient={addIngredient}
+              editIngredient={editIngredient}
               name_={currentIngredient.name}
               quantity_={String(currentIngredient.quantity)}
               description_={currentIngredient.description}
+              currentIngredient={currentIngredient}
+              setCurrentIngredient={setCurrentIngredient}
             />
           </div>
         ) : (
           <div className="ingredient-form">
             <h2>Ingredient Form</h2>
-            <FormIngredient addIngredient={addIngredient} />
+            <FormIngredient
+              addIngredient={addIngredient}
+              editIngredient={editIngredient}
+              currentIngredient={currentIngredient}
+              setCurrentIngredient={setCurrentIngredient}
+            />
           </div>
         )}
       </div>
