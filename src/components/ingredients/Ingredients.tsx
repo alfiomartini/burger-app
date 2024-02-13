@@ -4,7 +4,6 @@ import { Badge } from "../badge/Badge";
 import { FormIngredient } from "../formIngredient/FormIngredient";
 import { isEmpty } from "../../utilities";
 import styled from "styled-components";
-import "./styles.css";
 
 interface Props {
   ingredients: Ingredient[];
@@ -24,11 +23,11 @@ export function Ingredients({
   );
 
   return (
-    <div className="ingredients-container">
+    <IngredientsContainer>
       <div>
-        <div className="ingredients-list">
+        <IngredientsList>
           <h2>Ingredients List</h2>
-          <div className="ingredient-items">
+          <IngredientItems>
             {ingredients.map((item: Ingredient) => (
               <Badge
                 {...item}
@@ -37,8 +36,8 @@ export function Ingredients({
                 setCurrentIngredient={setCurrentIngredient}
               />
             ))}
-          </div>
-        </div>
+          </IngredientItems>
+        </IngredientsList>
       </div>
       {!isEmpty(currentIngredient) ? (
         <FormIngredient
@@ -60,7 +59,7 @@ export function Ingredients({
           setCurrentIngredient={setCurrentIngredient}
         />
       )}
-    </div>
+    </IngredientsContainer>
   );
 }
 
