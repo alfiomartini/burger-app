@@ -3,6 +3,7 @@ import { WeakIngredient, Ingredient } from "../../interfaces";
 import { Badge } from "../badge/Badge";
 import { FormIngredient } from "../formIngredient/FormIngredient";
 import { isEmpty } from "../../utilities";
+import styled from "styled-components";
 import "./styles.css";
 
 interface Props {
@@ -27,7 +28,7 @@ export function Ingredients({
       <div>
         <div className="ingredients-list">
           <h2>Ingredients List</h2>
-          <div className="ingredients">
+          <div className="ingredient-items">
             {ingredients.map((item: Ingredient) => (
               <Badge
                 {...item}
@@ -62,3 +63,25 @@ export function Ingredients({
     </div>
   );
 }
+
+const IngredientsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  justify-content: space-around;
+  align-content: center;
+  height: 60vh;
+`;
+
+const IngredientsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+`;
+
+const IngredientItems = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+`;
