@@ -124,3 +124,9 @@ const FormGroup = styled.form`
   min-width: 90%;
   gap: 15px;
 `;
+
+const FormControl = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+`;
