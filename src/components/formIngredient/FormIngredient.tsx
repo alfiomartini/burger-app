@@ -2,7 +2,6 @@ import { useState, useEffect, Dispatch } from "react";
 import { Ingredient, WeakIngredient } from "../../interfaces";
 import { isEmpty } from "../../utilities";
 import styled from "styled-components";
-import "./styles.css";
 
 interface Props {
   addIngredient: (item: WeakIngredient) => void;
@@ -59,10 +58,10 @@ export function FormIngredient({
   }
 
   return (
-    <div className="ingredient-form">
+    <IngredientForm>
       <h2>{title}</h2>
-      <form className="form-group" onSubmit={handleSubmit}>
-        <div className="form-control">
+      <FormGroup onSubmit={handleSubmit}>
+        <FormControl>
           <label htmlFor="name">Name*</label>
           <input
             type="text"
@@ -75,8 +74,8 @@ export function FormIngredient({
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-        </div>
-        <div className="form-control">
+        </FormControl>
+        <FormControl>
           <label htmlFor="quantity">Quantity* (grams)</label>
           <input
             type="text"
@@ -87,8 +86,8 @@ export function FormIngredient({
             onChange={handleQuantity}
             required
           />
-        </div>
-        <div className="form-control">
+        </FormControl>
+        <FormControl>
           <label htmlFor="description">Description</label>
           <input
             type="text"
@@ -98,12 +97,12 @@ export function FormIngredient({
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-        </div>
+        </FormControl>
         <button type="submit">
           {isEmpty(currentIngredient) ? "Add Ingredient" : "Update Ingredient"}
         </button>
-      </form>
-    </div>
+      </FormGroup>
+    </IngredientForm>
   );
 }
 
@@ -129,4 +128,16 @@ const FormControl = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3px;
+
+  label {
+    display: block;
+    color: black;
+  }
+
+  input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 5px;
+  }
 `;
