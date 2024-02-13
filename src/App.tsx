@@ -12,7 +12,7 @@ import { Ingredients } from "./components/ingredients/Ingredients";
 import { Burgers } from "./components/burgers/Burgers";
 import { Orders } from "./components/orders/Orders";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
+import styled from "styled-components";
 
 function App() {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
@@ -97,27 +97,29 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
+    <AppContainer>
       <Header />
-      <div className="main">
-        <Routes>
-          <Route path="/" element={<Burgers burgers={burgers} />} />
-          <Route
-            path="/ingredients"
-            element={
-              <Ingredients
-                ingredients={ingredients}
-                addIngredient={addIngredient}
-                removeIngredient={removeIngredient}
-                editIngredient={editIngredient}
-              />
-            }
-          />
-          <Route path="/orders" element={<Orders />} />
-        </Routes>
-      </div>
-    </div>
+      <Routes>
+        <Route path="/" element={<Burgers burgers={burgers} />} />
+        <Route
+          path="/ingredients"
+          element={
+            <Ingredients
+              ingredients={ingredients}
+              addIngredient={addIngredient}
+              removeIngredient={removeIngredient}
+              editIngredient={editIngredient}
+            />
+          }
+        />
+        <Route path="/orders" element={<Orders />} />
+      </Routes>
+    </AppContainer>
   );
 }
+
+const AppContainer = styled.div`
+  padding: 1.5rem;
+`;
 
 export default App;
