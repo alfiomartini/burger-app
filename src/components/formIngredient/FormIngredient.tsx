@@ -11,6 +11,7 @@ interface Props {
   description_?: string;
   currentIngredient: Ingredient;
   setCurrentIngredient: Dispatch<Ingredient>;
+  title: string;
 }
 
 export function FormIngredient({
@@ -21,6 +22,7 @@ export function FormIngredient({
   quantity_ = "",
   description_ = "",
   currentIngredient,
+  title,
 }: Props) {
   const [name, setName] = useState(name_);
   const [quantity, setQuantity] = useState(quantity_);
@@ -56,47 +58,50 @@ export function FormIngredient({
   }
 
   return (
-    <form className="form-group" onSubmit={handleSubmit}>
-      <div className="form-control">
-        <label htmlFor="name">Name*</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Name of ingredient"
-          required
-          minLength={3}
-          maxLength={15}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div className="form-control">
-        <label htmlFor="quantity">Quantity* (grams)</label>
-        <input
-          type="text"
-          name="quantity"
-          id="quantity"
-          placeholder="Quantity (grams)"
-          value={String(quantity)}
-          onChange={handleQuantity}
-          required
-        />
-      </div>
-      <div className="form-control">
-        <label htmlFor="description">Description</label>
-        <input
-          type="text"
-          name="description"
-          id="description"
-          placeholder="A couple of words..."
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
-      <button type="submit">
-        {isEmpty(currentIngredient) ? "Add Ingredient" : "Update Ingredient"}
-      </button>
-    </form>
+    <div className="ingredient-form">
+      <h2>{title}</h2>
+      <form className="form-group" onSubmit={handleSubmit}>
+        <div className="form-control">
+          <label htmlFor="name">Name*</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Name of ingredient"
+            required
+            minLength={3}
+            maxLength={15}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="form-control">
+          <label htmlFor="quantity">Quantity* (grams)</label>
+          <input
+            type="text"
+            name="quantity"
+            id="quantity"
+            placeholder="Quantity (grams)"
+            value={String(quantity)}
+            onChange={handleQuantity}
+            required
+          />
+        </div>
+        <div className="form-control">
+          <label htmlFor="description">Description</label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            placeholder="A couple of words..."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <button type="submit">
+          {isEmpty(currentIngredient) ? "Add Ingredient" : "Update Ingredient"}
+        </button>
+      </form>
+    </div>
   );
 }

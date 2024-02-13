@@ -39,32 +39,26 @@ export function Ingredients({
           </div>
         </div>
       </div>
-      <div className="ingredients-form">
-        {!isEmpty(currentIngredient) ? (
-          <div className="ingredient-form">
-            <h2>Edit Ingredient Form</h2>
-            <FormIngredient
-              addIngredient={addIngredient}
-              editIngredient={editIngredient}
-              name_={currentIngredient.name}
-              quantity_={String(currentIngredient.quantity)}
-              description_={currentIngredient.description}
-              currentIngredient={currentIngredient}
-              setCurrentIngredient={setCurrentIngredient}
-            />
-          </div>
-        ) : (
-          <div className="ingredient-form">
-            <h2>Ingredient Form</h2>
-            <FormIngredient
-              addIngredient={addIngredient}
-              editIngredient={editIngredient}
-              currentIngredient={currentIngredient}
-              setCurrentIngredient={setCurrentIngredient}
-            />
-          </div>
-        )}
-      </div>
+      {!isEmpty(currentIngredient) ? (
+        <FormIngredient
+          addIngredient={addIngredient}
+          title="Edit Ingredient Form"
+          editIngredient={editIngredient}
+          name_={currentIngredient.name}
+          quantity_={String(currentIngredient.quantity)}
+          description_={currentIngredient.description}
+          currentIngredient={currentIngredient}
+          setCurrentIngredient={setCurrentIngredient}
+        />
+      ) : (
+        <FormIngredient
+          title="Add Ingredient Form"
+          addIngredient={addIngredient}
+          editIngredient={editIngredient}
+          currentIngredient={currentIngredient}
+          setCurrentIngredient={setCurrentIngredient}
+        />
+      )}
     </div>
   );
 }

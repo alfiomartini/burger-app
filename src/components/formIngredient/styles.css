@@ -20,3 +20,10 @@
   border: 1px solid gray;
   border-radius: 5px;
 }
+
+.ingredient-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+}
