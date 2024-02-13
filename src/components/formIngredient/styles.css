@@ -9,6 +9,12 @@
   gap: 15px;
 }
 
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .form-control label {
   display: block;
   color: black;

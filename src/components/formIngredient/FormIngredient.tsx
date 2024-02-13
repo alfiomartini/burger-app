@@ -1,6 +1,7 @@
 import { useState, useEffect, Dispatch } from "react";
 import { Ingredient, WeakIngredient } from "../../interfaces";
 import { isEmpty } from "../../utilities";
+import styled from "styled-components";
 import "./styles.css";
 
 interface Props {
@@ -105,3 +106,21 @@ export function FormIngredient({
     </div>
   );
 }
+
+const IngredientForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+`;
+
+const FormGroup = styled.form`
+  padding: 20px;
+  border: 1px solid black;
+  width: 70%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  min-width: 90%;
+  gap: 15px;
+`;
