@@ -26,8 +26,8 @@ function App() {
       newIngredients.sort((a, b) => a.name.localeCompare(b.name));
       setIngredients(newIngredients);
     } catch (error) {
-      if (error instanceof Error) {
-        console.log(error.message);
+      if (axios.isAxiosError(error)) {
+        console.log("Axios Error: Add Ingredient", error.message);
       }
     }
   }
@@ -38,8 +38,8 @@ function App() {
       const newIngredients = ingredients.filter((item) => item.id !== id);
       setIngredients(newIngredients);
     } catch (error) {
-      if (error instanceof Error) {
-        console.log(error.message);
+      if (axios.isAxiosError(error)) {
+        console.log("Axios Error: Remove Ingredient", error.message);
       }
     }
   }
@@ -54,8 +54,8 @@ function App() {
       newIngredients.sort((a, b) => a.name.localeCompare(b.name));
       setIngredients(newIngredients);
     } catch (error) {
-      if (error instanceof Error) {
-        console.log(error.message);
+      if (axios.isAxiosError(error)) {
+        console.log("Axios Error: Edit Ingredient", error.message);
       }
     }
   }
@@ -71,8 +71,7 @@ function App() {
         }
       } catch (error) {
         if (axios.isAxiosError(error)) {
-          console.log("Axios Error: Ingredients", error.message);
-          console.log(error);
+          console.log("Axios Error: Get Ingredients", error.message);
         }
       }
     };
@@ -81,7 +80,7 @@ function App() {
 
     return () => {
       active = false;
-      console.log("Ignoring fetchIngredients");
+      console.log("Ignoring Get Ingredients");
     };
   }, []);
 
@@ -93,8 +92,7 @@ function App() {
         if (active) setBurgers(_burgers);
       } catch (error) {
         if (axios.isAxiosError(error)) {
-          console.log("Axios Error: Burgers", error.message);
-          console.log(error);
+          console.log("Axios Error: GetBurgers", error.message);
         }
       }
     };
@@ -103,7 +101,7 @@ function App() {
 
     return () => {
       active = false;
-      console.log("Ignoring fetchBurgers");
+      console.log("Ignoring Get Burgers");
     };
   }, []);
 
