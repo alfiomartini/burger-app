@@ -1,12 +1,12 @@
 import { client } from "./httpClient";
 import { Ingredient, Burger, WeakIngredient } from "../interfaces";
 
-export async function fetchIngredients(): Promise<Ingredient[]> {
+export async function getIngredients(): Promise<Ingredient[]> {
   const response = await client.get("/ingredients");
   return response.data as Ingredient[];
 }
 
-export async function fetchBurgers(): Promise<Burger[]> {
+export async function getBurgers(): Promise<Burger[]> {
   const response = await client.get("/burgers");
   return response.data as Burger[];
 }

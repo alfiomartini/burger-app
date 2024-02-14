@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import {
-  fetchIngredients,
-  fetchBurgers,
+  getIngredients,
+  getBurgers,
   createIngredient,
   deleteIngredient,
   updateIngredient,
@@ -64,7 +64,7 @@ function App() {
     let active = true;
     const fetchData = async () => {
       try {
-        const _ingredients: Ingredient[] = await fetchIngredients();
+        const _ingredients: Ingredient[] = await getIngredients();
         if (active) {
           _ingredients.sort((a, b) => a.name.localeCompare(b.name));
           setIngredients(_ingredients);
@@ -72,6 +72,7 @@ function App() {
       } catch (error) {
         if (axios.isAxiosError(error)) {
           console.log("Axios Error: Ingredients", error.message);
+          console.log(error);
         }
       }
     };
@@ -88,11 +89,12 @@ function App() {
     let active = true;
     const fetchData = async () => {
       try {
-        const _burgers: Burger[] = await fetchBurgers();
+        const _burgers: Burger[] = await getBurgers();
         if (active) setBurgers(_burgers);
       } catch (error) {
         if (axios.isAxiosError(error)) {
           console.log("Axios Error: Burgers", error.message);
+          console.log(error);
         }
       }
     };
