@@ -12,6 +12,7 @@ import { Ingredients } from "./components/ingredients/Ingredients";
 import { Burgers } from "./components/burgers/Burgers";
 import { Orders } from "./components/orders/Orders";
 import { Route, Routes } from "react-router-dom";
+import axios from "axios";
 import styled from "styled-components";
 
 function App() {
@@ -62,20 +63,21 @@ function App() {
   useEffect(() => {
     let active = true;
     const fetchData = async () => {
-      const _ingredients: Ingredient[] = await fetchIngredients();
-      if (active) {
-        _ingredients.sort((a, b) => a.name.localeCompare(b.name));
-        setIngredients(_ingredients);
+      try {
+        const _ingredients: Ingredient[] = await fetchIngredients();
+        if (active) {
+          _ingredients.sort((a, b) => a.name.localeCompare(b.name));
+          setIngredients(_ingredients);
+        }
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          console.log("Axios Error: Ingredients", error.message);
+        }
       }
     };
 
-    try {
-      fetchData();
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log(error.message);
-      }
-    }
+    fetchData();
+
     return () => {
       active = false;
       console.log("Ignoring fetchIngredients");
@@ -85,17 +87,17 @@ function App() {
   useEffect(() => {
     let active = true;
     const fetchData = async () => {
-      const _burgers: Burger[] = await fetchBurgers();
-      if (active) setBurgers(_burgers);
+      try {
+        const _burgers: Burger[] = await fetchBurgers();
+        if (active) setBurgers(_burgers);
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          console.log("Axios Error: Burgers", error.message);
+        }
+      }
     };
 
-    try {
-      fetchData();
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log(error.message);
-      }
-    }
+    fetchData();
 
     return () => {
       active = false;
