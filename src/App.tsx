@@ -62,7 +62,7 @@ function App() {
 
   useEffect(() => {
     let active = true;
-    const fetchData = async () => {
+    const fetchIngredients = async () => {
       try {
         const _ingredients: Ingredient[] = await getIngredients();
         if (active) {
@@ -76,7 +76,7 @@ function App() {
       }
     };
 
-    fetchData();
+    fetchIngredients();
 
     return () => {
       active = false;
@@ -86,7 +86,7 @@ function App() {
 
   useEffect(() => {
     let active = true;
-    const fetchData = async () => {
+    const fetchBurgers = async () => {
       try {
         const _burgers: Burger[] = await getBurgers();
         if (active) setBurgers(_burgers);
@@ -97,7 +97,7 @@ function App() {
       }
     };
 
-    fetchData();
+    fetchBurgers();
 
     return () => {
       active = false;
