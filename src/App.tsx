@@ -21,7 +21,9 @@ function App() {
   async function addIngredient(item: WeakIngredient) {
     try {
       const newIngredient = await createIngredient(item);
-      setIngredients((prev) => [...prev, newIngredient]);
+      const newIngredients = [...ingredients, newIngredient];
+      newIngredients.sort((a, b) => a.name.localeCompare(b.name));
+      setIngredients(newIngredients);
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);
@@ -44,10 +46,12 @@ function App() {
   async function editIngredient(item: Ingredient) {
     try {
       const updatedIngredient = await updateIngredient(item);
-      setIngredients((prev) => [
-        ...prev.filter((elem) => elem.id !== item.id),
+      const newIngredients = [
+        ...ingredients.filter((elem) => elem.id !== item.id),
         updatedIngredient,
-      ]);
+      ];
+      newIngredients.sort((a, b) => a.name.localeCompare(b.name));
+      setIngredients(newIngredients);
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);
@@ -59,7 +63,10 @@ function App() {
     let active = true;
     const fetchData = async () => {
       const _ingredients: Ingredient[] = await fetchIngredients();
-      if (active) setIngredients(_ingredients);
+      if (active) {
+        _ingredients.sort((a, b) => a.name.localeCompare(b.name));
+        setIngredients(_ingredients);
+      }
     };
 
     try {
