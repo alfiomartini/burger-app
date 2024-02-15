@@ -1,26 +1,87 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { WeakIngredient, Ingredient } from "../../interfaces";
 import { Badge } from "../badge/Badge";
 import { FormIngredient } from "../formIngredient/FormIngredient";
 import { isEmpty } from "../../utilities";
 import styled from "styled-components";
+import {
+  createIngredient,
+  deleteIngredient,
+  getIngredients,
+  updateIngredient,
+} from "../../api/fetchApis";
+import axios from "axios";
 
-interface Props {
-  ingredients: Ingredient[];
-  addIngredient: (item: WeakIngredient) => void;
-  removeIngredient: (id: string) => void;
-  editIngredient: (item: Ingredient) => void;
-}
-
-export function Ingredients({
-  ingredients,
-  addIngredient,
-  removeIngredient,
-  editIngredient,
-}: Props) {
+export function Ingredients() {
   const [currentIngredient, setCurrentIngredient] = useState<Ingredient>(
     {} as Ingredient
   );
+  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+
+  async function addIngredient(item: WeakIngredient) {
+    try {
+      const newIngredient = await createIngredient(item);
+      const newIngredients = [...ingredients, newIngredient];
+      newIngredients.sort((a, b) => a.name.localeCompare(b.name));
+      setIngredients(newIngredients);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log("Axios Error: Add Ingredient", error.message);
+      }
+    }
+  }
+
+  async function removeIngredient(id: string) {
+    try {
+      await deleteIngredient(id);
+      const newIngredients = ingredients.filter((item) => item.id !== id);
+      setIngredients(newIngredients);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log("Axios Error: Remove Ingredient", error.message);
+      }
+    }
+  }
+
+  async function editIngredient(item: Ingredient) {
+    try {
+      const updatedIngredient = await updateIngredient(item);
+      const newIngredients = [
+        ...ingredients.filter((elem) => elem.id !== item.id),
+        updatedIngredient,
+      ];
+      newIngredients.sort((a, b) => a.name.localeCompare(b.name));
+      setIngredients(newIngredients);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log("Axios Error: Edit Ingredient", error.message);
+      }
+    }
+  }
+
+  useEffect(() => {
+    let active = true;
+    const fetchIngredients = async () => {
+      try {
+        const _ingredients: Ingredient[] = await getIngredients();
+        if (active) {
+          _ingredients.sort((a, b) => a.name.localeCompare(b.name));
+          setIngredients(_ingredients);
+        }
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          console.log("Axios Error: Get Ingredients", error.message);
+        }
+      }
+    };
+
+    fetchIngredients();
+
+    return () => {
+      active = false;
+      console.log("Cleaning fetch Ingredients");
+    };
+  }, []);
 
   return (
     <IngredientsContainer>
