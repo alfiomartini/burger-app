@@ -3,10 +3,9 @@ import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { Badge } from "../../components/badge/Badge";
 
-const mockRemoveIngredient = jest.fn();
-const mockSetCurrentIngredient = jest.fn();
-
-describe("<Badge /> rendering", () => {
+describe("<Badge />", () => {
+  const mockRemoveIngredient = jest.fn();
+  const mockSetCurrentIngredient = jest.fn();
   it("should render ingredient data", () => {
     render(
       <Badge
@@ -18,8 +17,8 @@ describe("<Badge /> rendering", () => {
         setCurrentIngredient={mockSetCurrentIngredient}
       />
     );
-    expect(screen.getByText(/name/)).toBeInTheDocument();
-    expect(screen.getByText(/100/)).toBeInTheDocument();
+    expect(screen.getByText(/name/i)).toBeInTheDocument();
+    expect(screen.getByText(/100/i)).toBeInTheDocument();
   });
 
   it("should invoke removeIngredient", async () => {

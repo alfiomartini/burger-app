@@ -98,7 +98,7 @@ export function FormIngredient({
             onChange={(e) => setDescription(e.target.value)}
           />
         </FormControl>
-        <button type="submit">
+        <button type="submit" aria-label="submit">
           {isEmpty(currentIngredient) ? "Add Ingredient" : "Update Ingredient"}
         </button>
       </FormGroup>
