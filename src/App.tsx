@@ -1,4 +1,5 @@
 import { Header } from "./components/header/Header";
+import { Home } from "./pages/home";
 import { Ingredients } from "./components/ingredients/Ingredients";
 import { Burgers } from "./components/burgers/Burgers";
 import { Orders } from "./components/orders/Orders";
@@ -10,7 +11,8 @@ function App() {
     <AppContainer>
       <Header />
       <Routes>
-        <Route path="/" element={<Burgers />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/burgers" element={<Burgers />} />
         <Route path="/ingredients" element={<Ingredients />} />
         <Route path="/orders" element={<Orders />} />
       </Routes>
