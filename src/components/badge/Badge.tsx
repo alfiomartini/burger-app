@@ -26,6 +26,7 @@ export function Badge({
       {name} ({quantity}){" "}
       <BadgeIcons>
         <CiEdit
+          aria-label="badge-edit"
           size="1.3em"
           style={{ cursor: "pointer" }}
           onClick={() =>
@@ -33,6 +34,7 @@ export function Badge({
           }
         />{" "}
         <RiDeleteBinLine
+          aria-label="badge-delete"
           size="1.3em"
           style={{ cursor: "pointer" }}
           onClick={() => removeIngredient(id)}
