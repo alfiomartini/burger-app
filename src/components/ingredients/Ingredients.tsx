@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch } from "react";
 import { WeakIngredient, Ingredient } from "../../interfaces";
 import { Badge } from "../badge/Badge";
 import { FormIngredient } from "../formIngredient/FormIngredient";
@@ -10,12 +10,18 @@ import {
   getIngredients,
   updateIngredient,
 } from "../../api/fetchApis";
+
+interface Props {
+  currentIngredient: Ingredient;
+  setCurrentIngredient: Dispatch<Ingredient>;
+}
+
 import axios from "axios";
 
-export function Ingredients() {
-  const [currentIngredient, setCurrentIngredient] = useState<Ingredient>(
-    {} as Ingredient
-  );
+export function Ingredients({
+  currentIngredient,
+  setCurrentIngredient,
+}: Props) {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
 
   async function addIngredient(item: WeakIngredient) {
