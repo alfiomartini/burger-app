@@ -3,26 +3,6 @@ import "@testing-library/jest-dom";
 import { Header } from "../../components/header/Header";
 import { BrowserRouter } from "react-router-dom";
 
-jest.mock("../../pages/Home", () => ({
-  __esModule: true,
-  Home: () => <div>Mock Landing Page</div>,
-}));
-
-jest.mock("../../components/burgers/Burgers", () => ({
-  __esModule: true,
-  Burgers: () => <div>Mock Component Burgers</div>,
-}));
-
-jest.mock("../../components/orders/Orders", () => ({
-  __esModule: true,
-  Orders: () => <div>Mock Component Orders</div>,
-}));
-
-jest.mock("../../components/ingredients/Ingredients", () => ({
-  __esModule: true,
-  Ingredients: () => <div>Mock Component Ingredients</div>,
-}));
-
 describe("<Header />", () => {
   it("should render appropriately", () => {
     render(<Header />, { wrapper: BrowserRouter });
