@@ -12,6 +12,7 @@ function App() {
   const [currentIngredient, setCurrentIngredient] = useState<Ingredient>(
     {} as Ingredient
   );
+
   return (
     <AppContainer>
       <Header />

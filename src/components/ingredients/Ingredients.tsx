@@ -10,13 +10,12 @@ import {
   getIngredients,
   updateIngredient,
 } from "../../api/fetchApis";
+import { handleApiError } from "../../utilities";
 
 interface Props {
   currentIngredient: Ingredient;
   setCurrentIngredient: Dispatch<Ingredient>;
 }
-
-import axios from "axios";
 
 export function Ingredients({
   currentIngredient,
@@ -31,9 +30,7 @@ export function Ingredients({
       newIngredients.sort((a, b) => a.name.localeCompare(b.name));
       setIngredients(newIngredients);
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log("Axios Error: Add Ingredient", error.message);
-      }
+      handleApiError(error);
     }
   }
 
@@ -43,9 +40,7 @@ export function Ingredients({
       const newIngredients = ingredients.filter((item) => item.id !== id);
       setIngredients(newIngredients);
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log("Axios Error: Remove Ingredient", error.message);
-      }
+      handleApiError(error);
     }
   }
 
@@ -59,9 +54,7 @@ export function Ingredients({
       newIngredients.sort((a, b) => a.name.localeCompare(b.name));
       setIngredients(newIngredients);
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log("Axios Error: Edit Ingredient", error.message);
-      }
+      handleApiError(error);
     }
   }
 
@@ -75,9 +68,7 @@ export function Ingredients({
           setIngredients(_ingredients);
         }
       } catch (error) {
-        if (axios.isAxiosError(error)) {
-          console.log("Axios Error: Get Ingredients", error.message);
-        }
+        handleApiError(error);
       }
     };
 

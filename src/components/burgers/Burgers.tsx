@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Burger } from "../../interfaces";
 import { getBurgers } from "../../api/fetchApis";
-import axios from "axios";
+import { handleApiError } from "../../utilities";
 
 export function Burgers() {
   const [burgers, setBurgers] = useState<Burger[]>([]);
@@ -13,9 +13,7 @@ export function Burgers() {
         const _burgers: Burger[] = await getBurgers();
         if (active) setBurgers(_burgers);
       } catch (error) {
-        if (axios.isAxiosError(error)) {
-          console.log("Axios Error: GetBurgers", error.message);
-        }
+        handleApiError(error);
       }
     };
 
