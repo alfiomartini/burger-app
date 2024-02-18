@@ -1,4 +1,5 @@
 export default {
+  verbose: true,
   preset: "ts-jest",
   testEnvironment: "jsdom",
   transform: {

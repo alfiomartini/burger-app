@@ -85,13 +85,14 @@ export function Ingredients({
       <div>
         <IngredientsList>
           <h2>Ingredients List</h2>
-          <IngredientItems>
+          <IngredientItems role="list" aria-label="ingredients-list">
             {ingredients.map((item: Ingredient) => (
               <Badge
                 {...item}
                 key={item.id}
                 removeIngredient={removeIngredient}
                 setCurrentIngredient={setCurrentIngredient}
+                role="listitem"
               />
             ))}
           </IngredientItems>

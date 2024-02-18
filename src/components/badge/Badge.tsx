@@ -11,6 +11,7 @@ interface Props {
   quantity: number;
   removeIngredient: (id: string) => void;
   setCurrentIngredient: Dispatch<Ingredient>;
+  role?: string;
 }
 
 export function Badge({
@@ -20,9 +21,10 @@ export function Badge({
   description,
   removeIngredient,
   setCurrentIngredient,
+  ...rest
 }: Props) {
   return (
-    <BadgeContainer>
+    <BadgeContainer {...rest}>
       {name} ({quantity}){" "}
       <BadgeIcons>
         <CiEdit
