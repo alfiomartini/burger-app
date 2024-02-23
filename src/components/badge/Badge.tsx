@@ -25,7 +25,7 @@ export function Badge({
 }: Props) {
   return (
     <BadgeContainer {...rest}>
-      {name} ({quantity}){" "}
+      {name} ({`${quantity} ${description}`}){" "}
       <BadgeIcons>
         <CiEdit
           aria-label="badge-edit"

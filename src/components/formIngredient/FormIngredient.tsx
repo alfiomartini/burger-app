@@ -76,12 +76,12 @@ export function FormIngredient({
           />
         </FormControl>
         <FormControl>
-          <label htmlFor="quantity">Quantity* (grams)</label>
+          <label htmlFor="quantity">Quantity*</label>
           <input
             type="text"
             name="quantity"
             id="quantity"
-            placeholder="Quantity (grams)"
+            placeholder="Quantity"
             value={String(quantity)}
             onChange={handleQuantity}
             required
