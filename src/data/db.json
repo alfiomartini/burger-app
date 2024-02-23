@@ -1,5 +1,5 @@
 {
-  "burgers": [
+  "burger": [
     {
       "id": "0",
       "name": "Standard Burger",
@@ -130,7 +130,7 @@
       ]
     }
   ],
-  "ingredients": [
+  "ingredient": [
     {
       "id": "1",
       "name": "pickles",
@@ -216,7 +216,7 @@
       "description": "grams"
     }
   ],
-  "purchases": [
+  "purchase": [
     {
       "burger_id": "7",
       "customer_name": "Mary Williams"

@@ -1,5 +1,5 @@
 {
-  "burgers": [
+  "burger": [
     {
       "id": "0",
       "name": "Standard Burger",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "id": 1,
+      "id": "1",
       "name": "Chicken Burger",
       "description": "A chicken sandwich is a sandwich that typically consists of boneless, skinless chicken breast or thigh, served between slices of bread, on a bun",
       "ingredients": [
@@ -87,7 +87,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Fish Burger",
       "description": "A homemade fish burger with a crunchy crumb, healthy and packed with flavour",
       "ingredients": [
@@ -130,7 +130,7 @@
       ]
     }
   ],
-  "ingredients": [
+  "ingredient": [
     {
       "id": "1",
       "name": "pickles",
@@ -214,24 +214,34 @@
       "name": "mayo",
       "quantity": 300,
       "description": "grams"
+    },
+    {
+      "id": "479d",
+      "name": "beef fillet",
+      "quantity": 1000,
+      "description": "grams"
     }
   ],
-  "purchases": [
+  "purchase": [
     {
       "burger_id": "7",
-      "customer_name": "Mary Williams"
+      "customer_name": "Mary Williams",
+      "id": "d311"
     },
     {
       "burger_id": "8",
-      "customer_name": "John Taylor"
+      "customer_name": "John Taylor",
+      "id": "9c93"
     },
     {
       "burger_id": "9",
-      "customer_name": "Simon Muller"
+      "customer_name": "Simon Muller",
+      "id": "9d24"
     },
     {
       "burger_id": "7",
-      "customer_name": "Suzy Jones"
+      "customer_name": "Suzy Jones",
+      "id": "d60c"
     }
   ]
 }
