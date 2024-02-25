@@ -2,7 +2,7 @@ import { useState, useEffect, Dispatch } from "react";
 import { Ingredient, WeakIngredient, quantity_options } from "../../interfaces";
 import { isEmpty } from "../../utilities";
 import styled from "styled-components";
-import "./styles.css";
+// import "./styles.css";
 
 interface Props {
   addIngredient: (item: WeakIngredient) => void;
@@ -88,7 +88,7 @@ export function FormIngredient({
             required
           />
         </FormControl>
-        <div className="custom-select">
+        <CustomSelect>
           <FormControl>
             <label htmlFor="description">Quantity type</label>
             <select
@@ -104,7 +104,7 @@ export function FormIngredient({
               ))}
             </select>
           </FormControl>
-        </div>
+        </CustomSelect>
         <button type="submit" aria-label="submit">
           {isEmpty(currentIngredient) ? "Add Ingredient" : "Update Ingredient"}
         </button>
@@ -158,5 +158,33 @@ const FormControl = styled.div`
     border-radius: 0.25rem;
     color: black;
     cursor: pointer;
+  }
+`;
+
+const CustomSelect = styled.div`
+  width: 100%;
+  position: relative;
+
+  &::before,
+  &::after {
+    --size: 0.3rem;
+    position: absolute;
+    content: "";
+    right: 1rem;
+    pointer-events: none;
+  }
+
+  &::before {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid black;
+    top: 65%;
+  }
+
+  &::after {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid black;
+    top: 75%;
   }
 `;
