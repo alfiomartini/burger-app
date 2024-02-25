@@ -1,3 +1,14 @@
+enum quantity_type {
+  grams = "grams",
+  ml = "ml",
+  units = "units",
+}
+
+export const quantity_options = Object.values(quantity_type).map((value) => ({
+  label: value,
+  value,
+}));
+
 export interface Ingredient {
   id: string;
   name: string;

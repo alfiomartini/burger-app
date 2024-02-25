@@ -1,7 +1,8 @@
 import { useState, useEffect, Dispatch } from "react";
-import { Ingredient, WeakIngredient } from "../../interfaces";
+import { Ingredient, WeakIngredient, quantity_options } from "../../interfaces";
 import { isEmpty } from "../../utilities";
 import styled from "styled-components";
+import "./styles.css";
 
 interface Props {
   addIngredient: (item: WeakIngredient) => void;
@@ -87,17 +88,23 @@ export function FormIngredient({
             required
           />
         </FormControl>
-        <FormControl>
-          <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            name="description"
-            id="description"
-            placeholder="A couple of words..."
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </FormControl>
+        <div className="custom-select">
+          <FormControl>
+            <label htmlFor="description">Quantity type</label>
+            <select
+              name="description"
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            >
+              {quantity_options.map((option) => (
+                <option value={option.value} key={option.label}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </FormControl>
+        </div>
         <button type="submit" aria-label="submit">
           {isEmpty(currentIngredient) ? "Add Ingredient" : "Update Ingredient"}
         </button>
@@ -139,5 +146,17 @@ const FormControl = styled.div`
     width: 100%;
     border: 1px solid gray;
     border-radius: 5px;
+  }
+
+  select {
+    appearance: none;
+    width: 100%;
+    /* font-size: 1.15rem; */
+    padding: 0.675em 6em 0.675em 1em;
+    background-color: white;
+    border: 1px solid #caced1;
+    border-radius: 0.25rem;
+    color: black;
+    cursor: pointer;
   }
 `;
