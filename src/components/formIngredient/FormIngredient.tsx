@@ -97,6 +97,9 @@ export function FormIngredient({
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             >
+              {description.length === 0 && (
+                <option value="">Choose an option</option>
+              )}
               {quantity_options.map((option) => (
                 <option value={option.value} key={option.label}>
                   {option.label}
