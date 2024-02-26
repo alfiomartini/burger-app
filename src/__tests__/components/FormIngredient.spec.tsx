@@ -168,4 +168,48 @@ describe("<FormIngredient />", () => {
     await user.click(updateIngredient);
     expect(mockEditIngredient).toHaveBeenCalledTimes(1);
   });
+
+  test("select component should behave accordingly", async () => {
+    const user = userEvent.setup();
+    const ingredient: Ingredient = {
+      id: "id",
+      quantity: 100,
+      description: "units",
+      name: "name",
+    };
+
+    render(
+      <FormIngredient
+        editIngredient={mockEditIngredient}
+        addIngredient={mockAddIngredient}
+        setCurrentIngredient={mockSetCurrentIngredient}
+        title="Form Title"
+        currentIngredient={ingredient}
+        name_="name"
+        quantity_="100"
+        description_="units"
+      />
+    );
+
+    const quantityTypeSelect = screen.getByRole("combobox", {
+      name: /quantity type/i,
+    });
+
+    expect(quantityTypeSelect).toHaveValue("units");
+
+    await user.selectOptions(quantityTypeSelect, "ml");
+
+    const optionML = screen.getByRole("option", {
+      name: "ml",
+    }) as HTMLOptionElement;
+    const optionUnits = screen.getByRole("option", {
+      name: "units",
+    }) as HTMLOptionElement;
+    const optionGrams = screen.getByRole("option", {
+      name: "grams",
+    }) as HTMLOptionElement;
+    expect(optionML.selected).toBe(true);
+    expect(optionUnits.selected).toBe(false);
+    expect(optionGrams.selected).toBe(false);
+  });
 });
