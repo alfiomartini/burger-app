@@ -2,7 +2,6 @@ import { useState, useEffect, Dispatch } from "react";
 import { Ingredient, WeakIngredient, quantity_options } from "../../interfaces";
 import { isEmpty } from "../../utilities";
 import styled from "styled-components";
-// import "./styles.css";
 
 interface Props {
   addIngredient: (item: WeakIngredient) => void;
@@ -27,12 +26,12 @@ export function FormIngredient({
 }: Props) {
   const [name, setName] = useState(name_);
   const [quantity, setQuantity] = useState(quantity_);
-  const [description, setDescription] = useState(description_);
+  const [quantityType, setQuantityType] = useState(description_);
 
   useEffect(() => {
     setName(name_);
     setQuantity(quantity_);
-    setDescription(description_);
+    setQuantityType(description_);
   }, [name_, quantity_, description_]);
 
   const handleQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,19 +42,23 @@ export function FormIngredient({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (isEmpty(currentIngredient))
-      addIngredient({ name, quantity: parseInt(quantity), description });
+      addIngredient({
+        name,
+        quantity: parseInt(quantity),
+        description: quantityType,
+      });
     else {
       editIngredient({
         id: currentIngredient.id,
         name,
         quantity: parseInt(quantity),
-        description,
+        description: quantityType,
       });
       setCurrentIngredient({} as Ingredient);
     }
     setName("");
     setQuantity("");
-    setDescription("");
+    setQuantityType("");
   }
 
   return (
@@ -90,14 +93,15 @@ export function FormIngredient({
         </FormControl>
         <CustomSelect>
           <FormControl>
-            <label htmlFor="description">Quantity type</label>
+            <label htmlFor="quantityType">Quantity type</label>
             <select
-              name="description"
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              name="quantityType"
+              id="quantityType"
+              value={quantityType}
+              onChange={(e) => setQuantityType(e.target.value)}
+              required
             >
-              {description.length === 0 && (
+              {quantityType.length === 0 && (
                 <option value="">Choose an option</option>
               )}
               {quantity_options.map((option) => (

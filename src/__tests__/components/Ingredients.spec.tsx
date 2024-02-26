@@ -35,8 +35,6 @@ describe("<Ingredients />", () => {
 
     expect(await screen.findByText(/ingredients list/i)).toBeInTheDocument();
     expect(await screen.findByText(/add ingredient form/i)).toBeInTheDocument();
-    // const pickles = await screen.findByText(/pickles/);
-    // expect(pickles).toBeInTheDocument();
   });
 
   test("it should render Ingredients List and Update Ingredients Form", async () => {

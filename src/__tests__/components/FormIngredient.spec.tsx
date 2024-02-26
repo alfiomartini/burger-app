@@ -21,8 +21,8 @@ describe("<FormIngredient />", () => {
     const formTitle = screen.getByText(/form title/i);
     expect(formTitle).toBeInTheDocument();
     expect(screen.getByText(/name*/i)).toBeInTheDocument();
-    expect(screen.getByText(/quantity*/i)).toBeInTheDocument();
-    expect(screen.getByText(/description/i)).toBeInTheDocument();
+    expect(screen.getByText("Quantity*")).toBeInTheDocument();
+    expect(screen.getByText(/quantity type/i)).toBeInTheDocument();
 
     const addIngredient = screen.getByRole("button", {
       name: /submit/,
@@ -36,8 +36,10 @@ describe("<FormIngredient />", () => {
     const quantity = screen.getByRole("textbox", { name: /quantity/i });
     expect(quantity).toHaveValue("");
 
-    const description = screen.getByRole("textbox", { name: /description/i });
-    expect(description).toHaveValue("");
+    const quantityType = screen.getByRole("combobox", {
+      name: /quantity type/i,
+    });
+    expect(quantityType).toHaveValue("");
   });
 
   it("<FormIngredient /> rendering without defaults", () => {
@@ -50,13 +52,13 @@ describe("<FormIngredient />", () => {
         currentIngredient={{} as Ingredient}
         name_="name"
         quantity_="100"
-        description_="description"
+        description_="grams"
       />
     );
 
     expect(screen.getByText(/name*/i)).toBeInTheDocument();
-    expect(screen.getByText(/quantity*/i)).toBeInTheDocument();
-    expect(screen.getByText(/description/i)).toBeInTheDocument();
+    expect(screen.getByText("Quantity*")).toBeInTheDocument();
+    expect(screen.getByText(/quantity type/i)).toBeInTheDocument();
 
     const name = screen.getByRole("textbox", { name: /name/i });
     expect(name).toHaveValue("name");
@@ -64,8 +66,10 @@ describe("<FormIngredient />", () => {
     const quantity = screen.getByRole("textbox", { name: /quantity/i });
     expect(quantity).toHaveValue("100");
 
-    const description = screen.getByRole("textbox", { name: /description/i });
-    expect(description).toHaveValue("description");
+    const quantityType = screen.getByRole("combobox", {
+      name: /quantity type/i,
+    });
+    expect(quantityType).toHaveValue("grams");
   });
 
   it("<FormIngredient /> should render the 'update ingredient' button", () => {
@@ -112,9 +116,11 @@ describe("<FormIngredient />", () => {
     const quantity = screen.getByRole("textbox", { name: /quantity/i });
     await user.type(quantity, "100");
 
-    // this is optional
-    const description = screen.getByRole("textbox", { name: /description/i });
-    await user.type(description, "description");
+    const quantityTypeSelect = screen.getByRole("combobox", {
+      name: /quantity type/i,
+    });
+
+    await user.selectOptions(quantityTypeSelect, "ml");
 
     const addIngredient = screen.getByRole("button", {
       name: /submit/,
@@ -129,7 +135,7 @@ describe("<FormIngredient />", () => {
     const ingredient: Ingredient = {
       id: "id",
       quantity: 100,
-      description: "description",
+      description: "units",
       name: "name",
     };
 
@@ -149,9 +155,11 @@ describe("<FormIngredient />", () => {
     const quantity = screen.getByRole("textbox", { name: /quantity/i });
     await user.type(quantity, "100");
 
-    // this is optional
-    const description = screen.getByRole("textbox", { name: /description/i });
-    await user.type(description, "description");
+    const quantityTypeSelect = screen.getByRole("combobox", {
+      name: /quantity type/i,
+    });
+
+    await user.selectOptions(quantityTypeSelect, "ml");
 
     const updateIngredient = screen.getByRole("button", {
       name: /submit/,
