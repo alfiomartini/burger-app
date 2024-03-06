@@ -15,7 +15,7 @@ describe("<Badge />", () => {
         description="description"
         removeIngredient={mockRemoveIngredient}
         setCurrentIngredient={mockSetCurrentIngredient}
-      />
+      />,
     );
     expect(screen.getByText(/name/i)).toBeInTheDocument();
     expect(screen.getByText(/100/i)).toBeInTheDocument();
@@ -32,7 +32,7 @@ describe("<Badge />", () => {
         description="description"
         removeIngredient={mockRemoveIngredient}
         setCurrentIngredient={mockSetCurrentIngredient}
-      />
+      />,
     );
 
     const badgeRemove = screen.getByLabelText("badge-delete");
@@ -52,7 +52,7 @@ describe("<Badge />", () => {
         description="description"
         removeIngredient={mockRemoveIngredient}
         setCurrentIngredient={mockSetCurrentIngredient}
-      />
+      />,
     );
 
     const badgeEdit = screen.getByLabelText("badge-edit");

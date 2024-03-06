@@ -9,9 +9,7 @@ import { useState } from "react";
 import { Ingredient } from "./interfaces";
 
 function App() {
-  const [currentIngredient, setCurrentIngredient] = useState<Ingredient>(
-    {} as Ingredient
-  );
+  const [currentIngredient, setCurrentIngredient] = useState<Ingredient>({} as Ingredient);
 
   return (
     <AppContainer>

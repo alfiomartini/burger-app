@@ -17,10 +17,7 @@ interface Props {
   setCurrentIngredient: Dispatch<Ingredient>;
 }
 
-export function Ingredients({
-  currentIngredient,
-  setCurrentIngredient,
-}: Props) {
+export function Ingredients({ currentIngredient, setCurrentIngredient }: Props) {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
 
   async function addIngredient(item: WeakIngredient) {

@@ -31,9 +31,7 @@ export function Badge({
           aria-label="badge-edit"
           size="1.3em"
           style={{ cursor: "pointer" }}
-          onClick={() =>
-            setCurrentIngredient({ name, id, quantity, description })
-          }
+          onClick={() => setCurrentIngredient({ name, id, quantity, description })}
         />{" "}
         <RiDeleteBinLine
           aria-label="badge-delete"

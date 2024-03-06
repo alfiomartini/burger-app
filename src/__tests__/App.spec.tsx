@@ -33,7 +33,7 @@ describe("<App />", () => {
     render(
       <MemoryRouter initialEntries={["/burgers"]}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText(/mock component burgers/i)).toBeInTheDocument();
   });
@@ -42,7 +42,7 @@ describe("<App />", () => {
     render(
       <MemoryRouter initialEntries={["/orders"]}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText(/mock component orders/i)).toBeInTheDocument();
   });
@@ -51,7 +51,7 @@ describe("<App />", () => {
     render(
       <MemoryRouter initialEntries={["/ingredients"]}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText(/mock component ingredients/i)).toBeInTheDocument();
   });

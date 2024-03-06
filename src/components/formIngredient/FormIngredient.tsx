@@ -101,9 +101,7 @@ export function FormIngredient({
               onChange={(e) => setQuantityType(e.target.value)}
               required
             >
-              {quantityType.length === 0 && (
-                <option value="">Choose an option</option>
-              )}
+              {quantityType.length === 0 && <option value="">Choose an option</option>}
               {quantity_options.map((option) => (
                 <option value={option.value} key={option.label}>
                   {option.label}

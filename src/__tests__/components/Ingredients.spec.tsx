@@ -21,7 +21,7 @@ mockGetIngredients.mockImplementation(() =>
       quantity: 150,
       description: "grams",
     },
-  ])
+  ]),
 );
 
 describe("<Ingredients />", () => {
@@ -30,7 +30,7 @@ describe("<Ingredients />", () => {
       <Ingredients
         currentIngredient={{} as Ingredient}
         setCurrentIngredient={mockSetCurrentIngredient}
-      />
+      />,
     );
 
     expect(await screen.findByText(/ingredients list/i)).toBeInTheDocument();
@@ -49,12 +49,10 @@ describe("<Ingredients />", () => {
       <Ingredients
         currentIngredient={mockIngredient}
         setCurrentIngredient={mockSetCurrentIngredient}
-      />
+      />,
     );
     expect(await screen.findByText(/ingredients list/i)).toBeInTheDocument();
-    expect(
-      await screen.findByText(/edit ingredient form/i)
-    ).toBeInTheDocument();
+    expect(await screen.findByText(/edit ingredient form/i)).toBeInTheDocument();
   });
 
   test("it should call the apis getIngredients (inside useEffect)", async () => {
@@ -62,7 +60,7 @@ describe("<Ingredients />", () => {
       <Ingredients
         currentIngredient={{} as Ingredient}
         setCurrentIngredient={mockSetCurrentIngredient}
-      />
+      />,
     );
 
     await waitFor(() => expect(mockGetIngredients).toHaveBeenCalled());
@@ -73,7 +71,7 @@ describe("<Ingredients />", () => {
       <Ingredients
         currentIngredient={{} as Ingredient}
         setCurrentIngredient={mockSetCurrentIngredient}
-      />
+      />,
     );
     const list = await screen.findByRole("list", { name: /ingredients-list/ });
 

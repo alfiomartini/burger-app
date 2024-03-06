@@ -16,7 +16,7 @@ describe("<FormIngredient />", () => {
         setCurrentIngredient={mockSetCurrentIngredient}
         title="Form Title"
         currentIngredient={{} as Ingredient}
-      />
+      />,
     );
     const formTitle = screen.getByText(/form title/i);
     expect(formTitle).toBeInTheDocument();
@@ -53,7 +53,7 @@ describe("<FormIngredient />", () => {
         name_="name"
         quantity_="100"
         description_="grams"
-      />
+      />,
     );
 
     expect(screen.getByText(/name*/i)).toBeInTheDocument();
@@ -87,7 +87,7 @@ describe("<FormIngredient />", () => {
         setCurrentIngredient={mockSetCurrentIngredient}
         title="Form Title"
         currentIngredient={ingredient}
-      />
+      />,
     );
 
     const updateIngredient = screen.getByRole("button", {
@@ -107,7 +107,7 @@ describe("<FormIngredient />", () => {
         setCurrentIngredient={mockSetCurrentIngredient}
         title="Form Title"
         currentIngredient={{} as Ingredient}
-      />
+      />,
     );
 
     const name = screen.getByRole("textbox", { name: /name/i });
@@ -146,7 +146,7 @@ describe("<FormIngredient />", () => {
         setCurrentIngredient={mockSetCurrentIngredient}
         title="Form Title"
         currentIngredient={ingredient}
-      />
+      />,
     );
 
     const name = screen.getByRole("textbox", { name: /name/i });
@@ -188,7 +188,7 @@ describe("<FormIngredient />", () => {
         name_="name"
         quantity_="100"
         description_="units"
-      />
+      />,
     );
 
     const quantityTypeSelect = screen.getByRole("combobox", {
