@@ -11,9 +11,7 @@ export async function getBurgers(): Promise<Burger[]> {
   return response.data as Burger[];
 }
 
-export async function createIngredient(
-  item: WeakIngredient
-): Promise<Ingredient> {
+export async function createIngredient(item: WeakIngredient): Promise<Ingredient> {
   const response = await client.post("/ingredient", item);
   return response.data as Ingredient;
 }

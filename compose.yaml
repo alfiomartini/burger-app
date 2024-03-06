@@ -5,9 +5,6 @@ services:
       context: .
     environment:
       # this is needed for hot reload (at least in windows)
-      # environment variables defined in Dockerfile will be used both in
-      # docker build and in the container, while in compose.yaml will just
-      # be used in the containers
       - CHOKIDAR_USEPOLLING=true
 
     ports:
